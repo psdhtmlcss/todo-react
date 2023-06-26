@@ -2,9 +2,11 @@ import { useState } from 'react';
 import {addTask} from '../store/reducer';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 
+
 export default function AddTaskForm() {
   const [inputValue, setInputValue] = useState('');
   const dispatch = useAppDispatch();
+  
   return (
     <div className="input-group mb-3">
       <input
@@ -21,7 +23,7 @@ export default function AddTaskForm() {
         onClick={(evt) => {
             evt.preventDefault()
             dispatch(
-              addTask({name: inputValue})
+              addTask({title: inputValue})
             )
             setInputValue('')
           }

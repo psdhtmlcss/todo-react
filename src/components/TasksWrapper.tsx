@@ -1,13 +1,23 @@
 import Task from './Task';
-import {useAppSelector} from '../hooks/useAppSelector';
+import { useGetTasksQuery } from '../api/todoApi';
 
 export default function TasksWrapper() {
-  const state = useAppSelector(state => state.todo);
+  const {isLoading, isError, data} = useGetTasksQuery();
+  
   return (
-    <ul className="list-unstyled">
+    <div>
       {
-        state.map(task => <Task task={task} key={task.id} />)
+        isError && <p className="text-center text-danger">Failed to load data.</p>
       }
-    </ul>
+      {
+        isLoading && <p className="text-center text-black-50">Loading...</p>
+      }
+      <ul className="list-unstyled">
+        {
+          data?.map((task, index) => index <= 10 && <Task task={task} key={task.id} />)
+        }
+      </ul>
+    </div>
+    
   )
 }
