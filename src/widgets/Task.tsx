@@ -1,6 +1,6 @@
-import type { Task as TaskType } from '../types/types';
+import type { Task as TaskType } from '../shared/types';
 import { useAppDispatch } from '../hooks/useAppDispatch';
-import { deleteTask } from '../store/reducer';
+import { deleteTask } from '../app/reducer';
 
 export default function Task({task}: {task: TaskType}) {
   const dispatch = useAppDispatch();

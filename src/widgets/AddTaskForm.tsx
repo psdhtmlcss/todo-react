@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {addTask} from '../store/reducer';
+import {addTask} from '../app/reducer';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 
 export default function AddTaskForm() {
