@@ -1,12 +1,18 @@
-import AddTaskForm from 'widgets/AddTaskForm';
-import TasksWrapper from 'widgets/TasksWrapper';
+import AddTaskForm from 'entities/AddTaskForm/ui/AddTaskForm';
+import TasksList from 'widget/ui/TasksList';
+import Container from 'shared/ui/Container/Container';
+import PageHeader from 'entities/PageHeader/ui/PageHeader';
+import useAddTask from 'features/addTask/model';
 
-export default function TasksListPage() {
+const TasksListPage = () => {
+  const {addNewTask} = useAddTask();
   return (
-    <div className="container pt-4">
-      <h1 className="mb-4">Todo list</h1>
-      <AddTaskForm />
-      <TasksWrapper />
-    </div>
+    <Container>
+      <PageHeader title="Toto list" />
+      <AddTaskForm addNewTask={addNewTask} />
+      <TasksList />
+    </Container>
   )
 }
+
+export default TasksListPage;

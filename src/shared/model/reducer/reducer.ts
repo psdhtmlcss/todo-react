@@ -1,6 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import type { Task } from '../shared/types';
 import { nanoid } from '@reduxjs/toolkit'
+
+interface Task {
+  id: string;
+  name: string;
+}
 
 const initialState: Task[] = [];
 
@@ -9,7 +13,7 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action: PayloadAction<{name: string}>) => {
-      const task = {
+      const task: Task = {
         id: nanoid(),
         name: action.payload.name
       }

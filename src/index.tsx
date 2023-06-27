@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import App from 'app/index';
-import { store } from './app/store';
+import { store } from './shared/model/store/store';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(

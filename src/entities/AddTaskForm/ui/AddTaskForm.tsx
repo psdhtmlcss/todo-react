@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import {addTask} from '../app/reducer';
-import { useAppDispatch } from '../hooks/useAppDispatch';
 
-export default function AddTaskForm() {
+type AddTaskFormProps = {
+  addNewTask: (name: string) => void;
+}
+
+const AddTaskForm: React.FC<AddTaskFormProps> = ({addNewTask}) => {
   const [inputValue, setInputValue] = useState('');
-  const dispatch = useAppDispatch();
+  
   return (
     <div className="input-group mb-3">
       <input
@@ -20,9 +22,7 @@ export default function AddTaskForm() {
         disabled={inputValue.trim().length === 0}
         onClick={(evt) => {
             evt.preventDefault()
-            dispatch(
-              addTask({name: inputValue})
-            )
+            addNewTask(inputValue)
             setInputValue('')
           }
         }
@@ -32,3 +32,5 @@ export default function AddTaskForm() {
     </div>
   )
 }
+
+export default AddTaskForm;
